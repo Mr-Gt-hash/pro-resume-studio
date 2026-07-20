@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProResume Studio - Live AI Resume Builder & Portfolio Generator</title>
+  <meta name="description" content="Build, customize, and export professional ATS-ready resumes with live dual-pane preview, custom templates, and direct PDF printing.">
+  <link rel="stylesheet" href="styles.css">
+  <!-- html2pdf.js for 1-click clean PDF download -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+  <!-- App Navbar Header -->
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-icon">P</div>
+      <span>ProResume Studio</span>
+      <span class="badge">ATS Verified</span>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-outline-accent" id="loadGithubBtn">
+        ✨ Load GitHub Data
+      </button>
+      <button class="btn btn-outline-accent" id="exportJsonBtn">
+        💾 Export JSON
+      </button>
+      <button class="btn btn-outline-accent" id="downloadHtmlBtn">
+        📄 Download HTML
+      </button>
+      <button class="btn btn-primary" id="downloadPdfBtn">
+        ⬇️ Download PDF
+      </button>
+      <button class="btn btn-primary" onclick="window.print()">
+        🖨️ Print
+      </button>
+    </div>
+  </header>
+
+  <!-- Studio Workspace -->
+  <div class="studio-container">
+
+    <!-- Left Editor Sidebar Controls -->
+    <aside class="editor-panel">
+      
+      <!-- Section Tabs -->
+      <nav class="editor-tabs">
+        <button class="tab-btn active" data-tab="profile">Profile</button>
+        <button class="tab-btn" data-tab="experience">Experience</button>
+        <button class="tab-btn" data-tab="awards">Awards</button>
+        <button class="tab-btn" data-tab="projects">Projects</button>
+        <button class="tab-btn" data-tab="skills">Skills</button>
+        <button class="tab-btn" data-tab="design">Design & ATS</button>
+      </nav>
+
+      <!-- Profile Tab -->
+      <div class="tab-content active" id="tab-profile">
+        <div class="form-section">
+          <div class="section-header-row">
+            <h3 class="form-section-title">Personal Information</h3>
+          </div>
+          <div class="form-group">
+            <label for="input-fullName">Full Name</label>
+            <input type="text" id="input-fullName" value="Gaurav Thakur">
+          </div>
+          <div class="form-group">
+            <label for="input-jobTitle">Target Job Title</label>
+            <input type="text" id="input-jobTitle" value="Cyber Security Analyst & Cloud DevOps Engineer">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="input-email">Email</label>
+              <input type="email" id="input-email" value="heyiamgt@protonmail.com">
+            </div>
+            <div class="form-group">
+              <label for="input-phone">Phone</label>
+              <input type="tel" id="input-phone" value="+91 8580959098">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="input-location">Location</label>
+            <input type="text" id="input-location" value="Mohali, Punjab, India">
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="form-section-title">Links & Handles</h3>
+          <div class="form-group">
+            <label for="input-github">GitHub Profile</label>
+            <input type="url" id="input-github" value="https://github.com/Mr-Gt-hash">
+          </div>
+          <div class="form-group">
+            <label for="input-linkedin">LinkedIn / Portfolio</label>
+            <input type="url" id="input-linkedin" value="https://mr-gt-hash.github.io/gaurav-thakur-portfolio/">
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="form-section-title">Professional Summary</h3>
+          <div class="form-group">
+            <textarea id="input-summary" rows="4">Result-driven Cyber Security Analyst and Cloud & DevOps Architect with 5+ years of practical IT experience. Currently specializing in full-stack architecture, network defenses, and threat evaluation protocols at Thinknext Technologies. Skilled in building and managing secure infrastructure pipelines on AWS, containerizing components via Docker/Kubernetes, and launching comprehensive penetration inspections matching OWASP security specifications.</textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Experience Tab -->
+      <div class="tab-content" id="tab-experience">
+        <div class="form-section">
+          <div class="section-header-row">
+            <h3 class="form-section-title">Work Experience</h3>
+            <button class="btn btn-outline-accent" id="addExpBtn">+ Add Job</button>
+          </div>
+          <div id="experience-list-container">
+            <!-- Dynamic experience cards rendered via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Awards & Achievements Tab -->
+      <div class="tab-content" id="tab-awards">
+        <div class="form-section">
+          <div class="section-header-row">
+            <h3 class="form-section-title">Awards & Achievements</h3>
+            <button class="btn btn-outline-accent" id="addAwardBtn">+ Add Award</button>
+          </div>
+          <div id="awards-list-container">
+            <!-- Dynamic award cards rendered via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Projects Tab -->
+      <div class="tab-content" id="tab-projects">
+        <div class="form-section">
+          <div class="section-header-row">
+            <h3 class="form-section-title">Key Projects</h3>
+            <button class="btn btn-outline-accent" id="addProjectBtn">+ Add Project</button>
+          </div>
+          <div id="projects-list-container">
+            <!-- Dynamic project cards rendered via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills & Education Tab -->
+      <div class="tab-content" id="tab-skills">
+        <div class="form-section">
+          <h3 class="form-section-title">Skill Groups</h3>
+          <div class="form-group">
+            <label for="input-secSkills">Cyber Security Skills</label>
+            <textarea id="input-secSkills" rows="2">Web & Network Penetration Testing, OWASP Top 10 Auditing, Threat Modeling, Vulnerability Assessments (Nessus, Burp Suite), Traffic Analysis (Wireshark), Nmap, Metasploit.</textarea>
+          </div>
+          <div class="form-group">
+            <label for="input-cloudSkills">Cloud & DevOps Skills</label>
+            <textarea id="input-cloudSkills" rows="2">AWS Cloud Services (EC2, S3, RDS, IAM, VPC), Docker, Kubernetes, Terraform Infrastructure as Code (IaC), Git/GitHub CI/CD Automation (GitHub Actions), Linux Shell Scripting.</textarea>
+          </div>
+          <div class="form-group">
+            <label for="input-devSkills">Full Stack & Scripting</label>
+            <textarea id="input-devSkills" rows="2">Node.js, Express REST API, React, HTML5, CSS3, JavaScript (ES6+), Python Scripting, SQL (MySQL/PostgreSQL), NoSQL (MongoDB).</textarea>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="section-header-row">
+            <h3 class="form-section-title">Education & Credentials</h3>
+            <button class="btn btn-outline-accent" id="addEduBtn">+ Add Education</button>
+          </div>
+          <div id="education-list-container">
+            <!-- Dynamic education cards -->
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="form-section-title">Certifications & Awards</h3>
+          <div class="form-group">
+            <textarea id="input-certifications" rows="3">• Certified Ethical Hacker (CEH) – EC-Council&#10;• AWS Certified Solutions Architect – Associate&#10;• CompTIA Security+ Certified Analyst&#10;• Junior Penetration Tester (eJPT) – eLearnSecurity</textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Design & ATS Tab -->
+      <div class="tab-content" id="tab-design">
+        <div class="form-section">
+          <h3 class="form-section-title">Template & Styling</h3>
+          <div class="form-group">
+            <label for="select-template">Resume Template Layout</label>
+            <select id="select-template">
+              <option value="template-executive" selected>Executive Modern (Clean Grid & Borders)</option>
+              <option value="template-minimalist">Tech Minimalist (Centered Header & Modern Spacing)</option>
+              <option value="template-creative">Creative Modern (Split Sidebar Accent)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="select-color">Accent Color Palette</label>
+            <select id="select-color">
+              <option value="#0f172a|#2563eb" selected>Deep Navy & Royal Blue</option>
+              <option value="#064e3b|#059669">Emerald Slate & Mint</option>
+              <option value="#312e81|#4f46e5">Midnight Indigo & Cyber Blue</option>
+              <option value="#4c0519|#e11d48">Dark Velvet & Crimson</option>
+              <option value="#18181b|#52525b">High-Contrast Onyx & Steel</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="select-font">Typography Font</label>
+            <select id="select-font">
+              <option value="'Inter', sans-serif" selected>Inter (Clean Professional)</option>
+              <option value="'Outfit', sans-serif">Outfit (Modern Geometric)</option>
+              <option value="'Roboto', sans-serif">Roboto (Tech Standard)</option>
+              <option value="'Merriweather', serif">Merriweather (Classic Serif)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="form-section-title">ATS Optimization Meter</h3>
+          <div class="ats-score-box">
+            <div class="score-circle" id="atsScoreCircle">94%</div>
+            <div class="score-info">
+              <h4 id="atsRatingLabel">Excellent ATS Match</h4>
+              <p id="atsTipText">High density of quantifiable impact words, cloud technologies, and clear section hierarchy.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- Right Live Canvas Workspace -->
+    <main class="preview-workspace">
+      
+      <div class="preview-toolbar">
+        <span class="toolbar-label">Live A4 Paper Canvas (Real-Time Rendering)</span>
+      </div>
+
+      <!-- Paper Resume Canvas Element -->
+      <article class="paper-canvas template-executive" id="resumePaper">
+        <!-- Rendered dynamically by app.js -->
+      </article>
+
+    </main>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

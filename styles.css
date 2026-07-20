@@ -1,0 +1,661 @@
+/* ProResume Studio Stylesheet */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:wght@300;400;700&family=Outfit:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+  --bg-dark: #0f172a;
+  --panel-bg: rgba(30, 41, 59, 0.75);
+  --panel-border: rgba(255, 255, 255, 0.1);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --input-bg: #1e293b;
+  --input-border: #334155;
+  --accent-color: #38bdf8;
+  --accent-hover: #0284c7;
+
+  /* Resume Theme Dynamic Variables */
+  --resume-primary: #0f172a;
+  --resume-accent: #2563eb;
+  --resume-text: #1e293b;
+  --resume-muted: #64748b;
+  --resume-border: #e2e8f0;
+  --resume-font: 'Inter', sans-serif;
+  --resume-spacing: 1.5rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* Header Navbar */
+.app-header {
+  height: 60px;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--panel-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.brand-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #38bdf8, #818cf8);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(56, 189, 248, 0.4);
+}
+
+.badge {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  font-weight: 600;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+.btn:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #0284c7, #2563eb);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #0369a1, #1d4ed8);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.btn-outline-accent {
+  border-color: rgba(56, 189, 248, 0.5);
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+}
+
+.btn-outline-accent:hover {
+  background: rgba(56, 189, 248, 0.2);
+}
+
+/* Main Studio Layout */
+.studio-container {
+  display: grid;
+  grid-template-columns: 480px 1fr;
+  height: calc(100vh - 60px);
+  overflow: hidden;
+}
+
+/* Left Sidebar Controls */
+.editor-panel {
+  background: var(--panel-bg);
+  border-right: 1px solid var(--panel-border);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-tabs {
+  display: flex;
+  background: rgba(15, 23, 42, 0.8);
+  border-bottom: 1px solid var(--panel-border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 0.85rem 0.5rem;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-btn:hover {
+  color: var(--text-main);
+}
+
+.tab-btn.active {
+  color: var(--accent-color);
+  border-bottom-color: var(--accent-color);
+  background: rgba(56, 189, 248, 0.05);
+}
+
+.tab-content {
+  padding: 1.5rem;
+  display: none;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tab-content.active {
+  display: flex;
+}
+
+/* Form Groups */
+.form-section {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  padding: 1.2rem;
+}
+
+.section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.form-section-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.85rem;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+textarea,
+select {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.85rem;
+  transition: border-color 0.2s;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Dynamic List Cards */
+.dynamic-card {
+  background: #1e293b;
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 0.85rem;
+  position: relative;
+}
+
+.card-header-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.btn-danger {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 0.3rem 0.6rem;
+  font-size: 0.75rem;
+  border-radius: 4px;
+}
+
+.btn-danger:hover {
+  background: rgba(239, 68, 68, 0.3);
+  color: #fff;
+}
+
+/* Right Preview Workspace */
+.preview-workspace {
+  background: #020617;
+  overflow-y: auto;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.preview-toolbar {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(15, 23, 42, 0.8);
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  border: 1px solid var(--panel-border);
+  backdrop-filter: blur(10px);
+}
+
+.toolbar-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Paper Canvas Rendering */
+.paper-canvas {
+  width: 210mm;
+  min-height: 297mm;
+  background: #ffffff;
+  color: var(--resume-text);
+  font-family: var(--resume-font);
+  padding: 16mm 16mm 16mm;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 2px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Page Break Protection for Clean PDF Generation */
+.section, 
+.template-executive .section, 
+.template-minimalist .section, 
+.template-creative .section,
+.item-header, 
+.item-sub, 
+ul.bullets, 
+ul.bullets li, 
+.skills-grid, 
+header {
+  page-break-inside: avoid !important;
+  break-inside: avoid !important;
+}
+
+/* Template 1: Executive Modern */
+.template-executive header {
+  border-bottom: 2.5px solid var(--resume-primary);
+  padding-bottom: 0.85rem;
+  margin-bottom: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.template-executive .name {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: var(--resume-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.template-executive .job-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--resume-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+.template-executive .contact-info {
+  text-align: right;
+  font-size: 0.8rem;
+  color: var(--resume-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.template-executive .contact-info a {
+  color: var(--resume-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.template-executive .section {
+  margin-bottom: 1rem;
+}
+
+.template-executive .section-title {
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--resume-primary);
+  border-bottom: 1px solid var(--resume-border);
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.65rem;
+  letter-spacing: 0.05em;
+}
+
+.template-executive p.summary {
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: var(--resume-text);
+}
+
+.template-executive .skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.template-executive .skill-group-title {
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--resume-primary);
+  margin-bottom: 0.15rem;
+}
+
+.template-executive .skill-list {
+  font-size: 0.8rem;
+  color: var(--resume-muted);
+  line-height: 1.4;
+}
+
+.template-executive .item-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--resume-primary);
+}
+
+.template-executive .item-sub {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: var(--resume-muted);
+  margin-bottom: 0.4rem;
+}
+
+.template-executive ul.bullets {
+  padding-left: 1.1rem;
+  font-size: 0.83rem;
+  color: var(--resume-text);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  line-height: 1.5;
+}
+
+/* Template 2: Tech Minimalist */
+.template-minimalist {
+  padding-top: 25mm;
+}
+.template-minimalist header {
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+.template-minimalist .name {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--resume-primary);
+  letter-spacing: -0.03em;
+}
+.template-minimalist .job-title {
+  font-size: 0.95rem;
+  color: var(--resume-accent);
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+.template-minimalist .contact-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  font-size: 0.8rem;
+  color: var(--resume-muted);
+  margin-top: 0.6rem;
+}
+.template-minimalist .contact-bar a {
+  color: var(--resume-primary);
+  text-decoration: none;
+}
+.template-minimalist .section-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--resume-accent);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.08em;
+}
+
+/* Template 3: Creative Modern Split */
+.template-creative {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 1.5rem;
+  padding: 0;
+  min-height: 297mm;
+}
+
+.template-creative .sidebar {
+  background: var(--resume-primary);
+  color: #fff;
+  padding: 25mm 15mm 20mm;
+}
+
+.template-creative .main-col {
+  padding: 25mm 20mm 20mm 5mm;
+}
+
+.template-creative .sidebar .name {
+  font-size: 1.8rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.template-creative .sidebar .job-title {
+  font-size: 0.85rem;
+  color: #93c5fd;
+  margin-top: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.template-creative .sidebar .section-title {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  color: #93c5fd;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-bottom: 0.25rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.05em;
+}
+
+.template-creative .sidebar-text {
+  font-size: 0.78rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+/* ATS Score Widget */
+.ats-score-box {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.score-circle {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 4px solid var(--accent-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+}
+
+.score-info h4 {
+  font-size: 0.88rem;
+  color: var(--text-main);
+}
+
+.score-info p {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+/* Print CSS setup - Zero margins to strip browser header/footer watermarks */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 15mm 18mm !important;
+    margin: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .app-header,
+  .editor-panel,
+  .preview-toolbar {
+    display: none !important;
+  }
+
+  .studio-container {
+    display: block !important;
+    height: auto !important;
+  }
+
+  .preview-workspace {
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+
+  .paper-canvas {
+    width: 100% !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    min-height: auto !important;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+  .studio-container {
+    grid-template-columns: 1fr;
+    height: auto;
+    overflow: auto;
+  }
+
+  .editor-panel {
+    border-right: none;
+    border-bottom: 1px solid var(--panel-border);
+    max-height: 500px;
+  }
+
+  .paper-canvas {
+    width: 100%;
+    min-height: auto;
+    padding: 20px;
+  }
+}
