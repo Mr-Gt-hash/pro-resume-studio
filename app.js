@@ -2,101 +2,83 @@
 
 const initialData = {
   profile: {
-    fullName: "Gaurav Thakur",
-    jobTitle: "Cyber Security Analyst & Cloud DevOps Engineer",
-    email: "heyiamgt@protonmail.com",
-    phone: "+91 8580959098",
-    location: "Mohali, Punjab, India",
-    github: "https://github.com/Mr-Gt-hash",
-    linkedin: "https://mr-gt-hash.github.io/gaurav-thakur-portfolio/",
-    summary: "Result-driven Cyber Security Analyst and Cloud & DevOps Architect with 5+ years of practical IT experience. Currently specializing in full-stack architecture, network defenses, and threat evaluation protocols at Thinknext Technologies. Skilled in building and managing secure infrastructure pipelines on AWS, containerizing components via Docker/Kubernetes, and launching comprehensive penetration inspections matching OWASP security specifications."
+    fullName: "Alex Morgan",
+    jobTitle: "Senior Software Engineer & Cloud Architect",
+    email: "alex.morgan@example.com",
+    phone: "+1 (555) 019-2834",
+    location: "San Francisco, CA",
+    github: "https://github.com/example-user",
+    linkedin: "https://linkedin.com/in/example-user",
+    summary: "Experienced Software Engineer specializing in scalable full-stack web applications, microservice architectures, and automated CI/CD cloud deployments. Proven track record of improving application performance and establishing robust cloud security protocols."
   },
   experience: [
     {
       id: "exp_1",
-      role: "Cyber Analyst & Full Stack Developer",
-      company: "Thinknext Technologies Private Limited",
-      location: "Mohali, Punjab, India",
+      role: "Senior Full Stack Engineer",
+      company: "Acme Systems Corp",
+      location: "San Francisco, CA",
       dates: "2022 - Present",
       bullets: [
-        "Lead penetration testing simulations, audit digital network architectures, and automate full-stack secure service releases.",
-        "Uncovered critical input sanitization holes and session bugs through routine black-box web scans, safeguarding client data registries.",
-        "Refactored centralized legacy systems into clean microservice clusters using Node.js, React, and MongoDB, increasing loading metrics by 25%.",
-        "Automated real-time Linux log processing structures and custom routing controls to prevent brute-force ingress."
+        "Architected microservices serving over 1M daily users with 99.99% uptime.",
+        "Optimized database query response times by 35% using Redis caching layers.",
+        "Automated cloud deployments on AWS using Terraform and Docker containers."
       ]
     },
     {
       id: "exp_2",
-      role: "Freelance Cyber Security & DevOps Consultant",
-      company: "Independent Contractor",
+      role: "Cloud DevOps Consultant",
+      company: "Tech Solutions Inc",
       location: "Remote",
       dates: "2020 - 2022",
       bullets: [
-        "Provided secure deployment frameworks, infrastructure automations, and penetration audit protocols to global clients.",
-        "Conducted OWASP compliance tests on customer sites, logging mitigation recommendations for application safety.",
-        "Configured secure AWS EC2 host nodes and automated testing lines (CI/CD) utilizing GitHub Actions workflows.",
-        "Constructed custom Python scraping scripts to sweep network configurations and verify missing header configurations."
+        "Automated multi-region Kubernetes deployments using GitHub Actions CI/CD pipelines.",
+        "Conducted OWASP security audits to harden production infrastructure and web applications."
       ]
     }
   ],
   awards: [
     {
       id: "award_1",
-      title: "Expert Resource Person | Faculty Development Program (FDP)",
-      organization: "CGC College of Engineering, Landran",
-      dates: "06–10 July 2026",
+      title: "Excellence in Engineering Award",
+      organization: "Global Tech Summit 2025",
+      dates: "October 2025",
       bullets: [
-        "Delivered expert sessions on Generative AI, Agentic Intelligence, and Autonomous Computing.",
-        "Contributed to faculty skill development in emerging AI technologies.",
-        "Recognized with a Certificate of Appreciation for outstanding contribution."
+        "Recognized for outstanding technical leadership and keynotes on Autonomous Computing.",
+        "Delivered workshops on microservice security and resilient cloud infrastructure."
       ]
     }
   ],
   projects: [
     {
       id: "proj_1",
-      title: "RecruitOS - AI Recruitment Platform",
-      stack: "Next.js 15, React 19, TypeScript, Tailwind CSS, Prisma, Clerk, Claude 3.5 API",
-      link: "https://github.com/Mr-Gt-hash/RecruitOS",
-      description: "Production-grade AI recruitment operating system featuring automated candidate evaluation workflows, structured resume parsing, and role match scoring."
+      title: "CloudFlow Orchestrator",
+      stack: "React, Node.js, TypeScript, AWS, Docker",
+      link: "https://github.com/example-user/cloudflow",
+      description: "Production-grade multi-tenant workflow automation platform featuring automated job queuing and real-time telemetry."
     },
     {
       id: "proj_2",
-      title: "AI Router Orchestrator",
-      stack: "JavaScript, Node.js, Multi-Agent Architecture, Telemetry",
-      link: "https://github.com/Mr-Gt-hash/ai-router-orchestrator",
-      description: "Interactive developer workspace demonstrating a production-grade multi-agent architecture with a deterministic JSON-based AI Router and asynchronous Agent Orchestrator."
-    },
-    {
-      id: "proj_3",
-      title: "AI PDF Assistant (Ground-Up RAG)",
-      stack: "Python, RAG Architecture, Vector Search",
-      link: "https://github.com/Mr-Gt-hash/ai-pdf-assistant",
-      description: "Lightweight RAG assistant processing PDF documents for Q&A, summaries, table extraction, and report generation built without heavy external orchestration frameworks."
+      title: "DevOps Telemetry Dashboard",
+      stack: "Python, Flask, Docker, Kubernetes, Prometheus",
+      link: "https://github.com/example-user/telemetry-dashboard",
+      description: "Lightweight monitoring tool processing container log streams and server metrics for automated alert dispatching."
     }
   ],
   skills: {
-    cyber: "Web & Network Penetration Testing, OWASP Top 10 Auditing, Threat Modeling, Vulnerability Assessments (Nessus, Burp Suite), Traffic Analysis (Wireshark), Nmap, Metasploit.",
-    cloud: "AWS Cloud Services (EC2, S3, RDS, IAM, VPC), Docker, Kubernetes, Terraform Infrastructure as Code (IaC), Git/GitHub CI/CD Automation (GitHub Actions), Linux Shell Scripting.",
-    dev: "Node.js, Express REST API, React, HTML5, CSS3, JavaScript (ES6+), Python Scripting, SQL (MySQL/PostgreSQL), NoSQL (MongoDB)."
+    cyber: "OWASP Auditing, Web Application Penetration Testing, Threat Modeling, Vulnerability Scanning (Nessus), Wireshark, Nmap.",
+    cloud: "AWS (EC2, S3, RDS, IAM, VPC), Docker, Kubernetes, Terraform IaC, GitHub Actions CI/CD, Linux Administration.",
+    dev: "TypeScript, JavaScript (ES6+), React, Next.js, Node.js, Express, Python, PostgreSQL, MongoDB, REST APIs."
   },
   education: [
     {
       id: "edu_1",
-      degree: "Diploma in Computer Science",
-      school: "Technical Education Board",
-      dates: "2020 - 2021",
-      notes: "Core focus: Algorithms, Data Structures, Operating Systems, Networking."
-    },
-    {
-      id: "edu_2",
-      degree: "Bachelor of Commerce (B.Com)",
-      school: "Himachal Pradesh University (HPU), Shimla",
-      dates: "2016 - 2019",
-      notes: "Focus areas: Business Operations, Financial Accounting, Systems Analytics."
+      degree: "B.S. in Computer Science",
+      school: "University of Technology",
+      dates: "2016 - 2020",
+      notes: "Focus on Distributed Systems, Algorithms, and Software Architecture."
     }
   ],
-  certifications: "• Certified Ethical Hacker (CEH) – EC-Council\n• AWS Certified Solutions Architect – Associate\n• CompTIA Security+ Certified Analyst\n• Junior Penetration Tester (eJPT) – eLearnSecurity",
+  certifications: "• AWS Certified Solutions Architect – Associate\n• Certified Information Systems Security Professional (CISSP)\n• CompTIA Security+ Certified Analyst",
   design: {
     template: "template-executive",
     primaryColor: "#0f172a",
@@ -713,7 +695,7 @@ function exportStateJson() {
   const jsonStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(appState, null, 2));
   const downloadAnchor = document.createElement('a');
   downloadAnchor.setAttribute("href", jsonStr);
-  downloadAnchor.setAttribute("download", "Gaurav_Thakur_Resume_Data.json");
+  downloadAnchor.setAttribute("download", `${appState.profile.fullName.replace(/\s+/g, '_')}_Resume_Data.json`);
   document.body.appendChild(downloadAnchor);
   downloadAnchor.click();
   downloadAnchor.remove();
